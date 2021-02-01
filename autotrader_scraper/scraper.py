@@ -104,7 +104,7 @@ def get_cars(make="BMW", model="5 SERIES", postcode="SW1A 0AA", radius=1500, min
 							car = {}
 							car["name"] = article.find("h3", {"class": "product-card-details__title"}).text.strip()				
 							car["link"] = "https://www.autotrader.co.uk" + article.find("a", {"class": "tracking-standard-link"})["href"][: article.find("a", {"class": "tracking-standard-link"})["href"].find("?")]
-							car["price"] = article.find("div", {"class": "product-card-pricing__price"}).text.strip()
+							car["price"] = int((article.find("div", {"class": "product-card-pricing__price"}).text.strip()).replace(',','').strip('£'))
 
 							key_specs_bs_list = article.find("ul", {"class": "listing-key-specs"}).find_all("li")
 							
